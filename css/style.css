@@ -1,0 +1,650 @@
+/* BOOTSTRAP có sẵn container nên tự canh k cần margin gì hết */
+html,
+body {
+    font-family: "Roboto Condensed", sans-serif;
+}
+.line::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    left: 0;
+    width: 0;
+    bottom: -1px;
+    display: inline-block;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    transition: all 0.5s;
+}
+
+/* HEADER */
+header {
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+header .text-right {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+.navbar {
+    padding: 0;
+}
+#movieNavBar .nav-item .nav-link {
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+#movieNavBar .navbar-nav {
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+}
+/* dùng after */
+#movieNavBar .nav-item::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    display: block;
+    /* trải màu từ màu này sang màu khác: #fbbd61,#ec7532 */
+    /* hướng trãi màu từ trái qua */
+    /* bên trái(bên bắt đầu) là màu cam nhạt */
+    /* bên phải (bên kết thúc) là màu cam đậm */
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    transition: all 0.5s;
+}
+/* hover bên li, after của li đổi */
+#movieNavBar .nav-item:hover::after {
+    width: 100%;
+}
+#movieNavBar .nav-item.active::after {
+    width: 100%;
+}
+
+/* CAROUSEL */
+.carousel-item {
+    position: relative;
+}
+/* Thêm nền đen đè lên trên img */
+.carousel_overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to top, black, transparent);
+}
+
+#movieCarousel .carousel-caption {
+    text-align: left;
+    /* căn giữa dùng cho position absolute */
+    top: 50%; /* vị trí của cha*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#movieCarousel .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    margin: 0 8px 0 0;
+    border: solid 2px #fff;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    /* transparent:màu trong suốt */
+
+    opacity: 1;
+    /* sửa cái hiện khoảng hở trong dấu chấm tròn */
+    /* cách 1 */
+    /* background-clip: border-box; */
+    /* background-color: transparent; */
+
+    /* cách 2 */
+    background: transparent;
+}
+#movieCarousel .carousel-indicators li.active {
+    /* background-color: white; */
+    background: white;
+}
+#movieCarousel .carousel-indicators {
+    justify-content: flex-start;
+    left: 50%;
+    bottom: 70px;
+    /* left là đẩy đi- transform kéo lại vào giữa */
+    transform: translateX(-50%);
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    z-index: 10;
+   
+}
+.carousel-caption .title {
+    color: #fbbd61;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.carousel-caption h2 {
+    font-size: 52px;
+    font-weight: 300;
+    animation: Heading .5s .5s forwards;
+}
+@keyframes Heading{
+    0%{
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.carousel-caption p {
+    font-size: 18px;
+    color: #fff;
+    /* margin: 0 0 20px; */
+    padding-right: 25%;
+}
+
+.movieTrailer .textPG {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 13px;
+    font-weight: 700;
+    /* dùng display để tạo ra cái vòng bao chứa nội dung trên 1 hàng */
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.btn-default {
+    border: none;
+    background-image: linear-gradient(to right, #fbbd61, #ec7532);
+}
+.btn-default::before {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -15px;
+    width: 0;
+    height: 100%;
+    content: "";
+    transition: all 0.4s;
+    background: #ec7532;
+    transform: skewX(30deg);
+}
+/*  */
+.btn-default:hover:before {
+    width: 140%;
+}
+.btn {
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    padding: 12px 24px;
+    letter-spacing: 4px;
+    border-width: 2px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.btn:focus {
+    outline: 0;
+    /* tắt viền xanh bên ngoài cái border khi nhấn vào button */
+     box-shadow: none;
+}
+.btn-default span {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font-size: 13px;
+}
+.btn i {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 13px;
+}
+
+/* phần màu cam */
+/* NEW IN */
+.newIn {
+    padding-top: 75px;
+}
+.newIn h2 {
+    font-size: 18px;
+    margin-bottom: 40px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: #ec7532;
+
+    line-height: 1.4em;
+    position: relative;
+    margin: 0 0 30px;
+    padding: 0 0 20px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.newIn h2:after {
+    position: absolute;
+    right: auto;
+    bottom: -1px;
+    display: block;
+    width: 125px;
+    height: 4px;
+    content: "";
+    background-image: linear-gradient(to right, #fbbd61, #ec7532);
+}
+.newIn_img {
+    position: relative;
+    /* ẩn mé bên ngoài k thuộc cha */
+    overflow: hidden;
+}
+/* bootstrap hỗ trợ về cái hình nên k cần gọi ra để làm */
+/* .newIn_img img{
+    width: 100%;
+} */
+
+.newIn_overplay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* che phần hở bên trên */
+    width: 200%;
+    height: 100%;
+    opacity: 0.8;
+    background: linear-gradient(to bottom, #fbbd61, #ec7532);
+    /* vị trí chưa rê chuột */
+    transform: skewX(30deg) translateX(-130%);
+    transition: all 0.5s;
+}
+/* bẻ xéo 30 độ */
+/* đã rê chuột, phủ lên hình rồi */
+/* transform: skewX(30deg) translateX(-30%); */
+
+.newIn_img:hover .newIn_overplay {
+    transform: skewX(30deg) translateX(-30%);
+}
+/*  hiển thị nội dung bên trong cái màu cam */
+
+.newIn_img {
+    position: relative;
+    /* overflow: hidden; */
+}
+.newIn_img .newIn_readmore {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    transition: all 0.5s;
+    text-align: center;
+}
+.newIn_img:hover .newIn_readmore {
+    opacity: 1;
+}
+
+.newIn_img .newIn_readmore a {
+    text-decoration: none;
+}
+.newIn_img .newIn_readmore .play {
+    font-size: 15px;
+    line-height: 80px;
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+    color: #fff;
+    border: solid 2px #fff;
+    border-radius: 50%;
+}
+.newIn_img .newIn_readmore .read-more {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+.newIn_img .newIn_readmore p {
+    color: #fff;
+}
+.newIn_name {
+    padding: 20px 0;
+    text-align: center;
+}
+.newIn_name p {
+    font-size: 18px;
+    color: #4a4a4a;
+}
+.newIn_name i {
+    font-size: 15px;
+    display: inline-block;
+    width: 15px;
+    color: #fbbd61;
+}
+.newIn_name i.prey {
+    color: #d8d8d8;
+}
+
+/* SHOW TIME */
+.showTime {
+    padding-top: 80px;
+}
+
+.showTime .nav-tabs .nav-item a {
+    font-size: 18px;
+    position: relative;
+    z-index: 0;
+    padding: 10px 30px 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+}
+.showTime .nav-tabs .nav-item .nav-link.show.active{
+    color: #ec7532;
+}
+
+.showTime .nav-tabs .nav-link.active.line::after,
+.showTime .nav-tabs .nav-link:hover.line::after {
+    width: 100%;
+}
+.showTime .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active,
+.showTime .nav-tabs .nav-link:hover {
+    border: white;
+    color: #ec7532;
+}
+/* phần danh sách gồm hình và chữ */
+.showtime_movie .img-fluid {
+    border-radius: 10px;
+}
+.showtime_detail span {
+    color: #ec7532;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.showtime_detail h1 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #101010;
+}
+.showtime_detail p {
+    margin: 0 0 20px;
+    color: #717171;
+}
+.showtime_detail .arrow-button {
+    font-size: 12px;
+    position: relative;
+    letter-spacing: 4px;
+    color: #ec7532;
+    text-decoration: none;
+}
+.showtime_detail .arrow-button:hover {
+    color: #4a4a4a;
+}
+.showtime_list i,
+.showtime_list span {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #4a4a4a;
+}
+.showtime_list .btn {
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 7px 10px;
+    letter-spacing: 2px;
+    color: #717171;
+    border-radius: 5px;
+    background-color: #d8d8d8;
+}
+.showtime_list .btn.past {
+    opacity: 0.4;
+}
+.showtime_lenght span {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    line-height: 35px;
+    text-align: center;
+}
+/* COMING SOON */
+.comingSoon {
+    position: relative;
+    color: #fff;
+    background: black;
+    background-image: url(../img/slide-7.png);
+    height: 500px;
+    width: 100%;
+}
+
+.comingSoon h1 {
+    font-size: 18px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    letter-spacing: 1.7px;
+    color: #ec7532;
+
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    border-bottom: 1px solid #333;
+   
+}
+
+.comingSoon h1::after {
+    position: absolute;
+    right: auto;
+    bottom: -1px;
+    display: block;
+    width: 125px;
+    height: 4px;
+    content: "";
+    background-image: linear-gradient(to right, #fbbd61, #ec7532);
+}
+.col-6 .coming_detail {
+    padding: 50px 0;
+}
+.coming_detail span {
+    color: #ec7532;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.coming_detail h2 {
+    z-index: 1;
+    color: #fff;
+    border-bottom-color: #333;
+    font-size: 34px;
+    margin-bottom: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.coming_detail .star_rating i {
+    font-size: 14px;
+    width: 14px;
+    font-size: 15px;
+    display: inline-block;
+    width: 18px;
+    color: #fbbd61;
+}
+.coming_detail .coming_date {
+    font-size: 14px;
+    margin-right: 8px;
+    color: #fff;
+    letter-spacing: 0;
+}
+.coming_detail .coming_date i {
+    color: #fff;
+}
+.coming_detail .coming_text {
+    margin: 0 0 20px;
+}
+.coming_detail .arrow_button {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #ec7532;
+    text-decoration: none;
+}
+.coming_detail .arrow_button:hover {
+    color: #fbbd61;
+}
+.coming_detail .arrow_button i {
+    margin-left: 3px;
+}
+.slide_video {
+    position: relative;
+}
+.slide_video .video i {
+    font-size: 30px;
+    line-height: 75px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    text-align: center;
+    text-indent: 10px;
+    color: #fff;
+    border: 2px solid #ec7532;
+    border-radius: 50%;
+}
+.coming_trailer .video {
+    width: 100%;
+    height: auto;
+    transition: all 0.5s;
+}
+.coming_trailer img {
+  width: 100%;
+  justify-content: center;
+}
+.clear_fix {
+    content: "";
+    padding: 40px 0;
+}
+/* MOVIE LIST */
+.movieList {
+    width: 100%;
+    background: black;
+}
+.slick-track_content {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.slick-slide {
+    padding: 50px 10px;
+}
+.slick-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.slick-slide .slick_text {
+    text-align: center;
+    color: white;
+}
+.slick-slide .slick_text .left {
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.slick-slide .slick_text span {
+    font-size: 14px;
+    opacity: 0.5;
+}
+/*  CONTACT*/
+.contact .clear_fix {
+    content: "";
+    padding: 20px 0;
+}
+.contact {
+    text-align: center;
+}
+.contact p {
+    font-size: 23px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #4a4a4a;
+}
+.contact .number {
+    font-size: 46px;
+    font-weight: 400;
+    background: linear-gradient(330deg, #fbbd61 0%, #ec7532 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+footer {
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 75px 0 0;
+    color: #fff;
+    background: #101010;
+    font-size: 14px;
+    font-weight: 500;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+footer h6 {
+    font-size: 16px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ec7532;
+    border: none;
+}
+footer ul {
+    padding: 10px 0;
+    list-style: none;
+}
+footer ul li a {
+    font-size: 13px;
+    display: inline-block;
+    padding: 3px 0;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    color: #fff;
+}
+footer ul li a:hover {
+    color: #fbbd61;
+    text-decoration: none;
+}
+footer .copyright {
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+footer .copyright a {
+    color: #fff;
+    text-decoration: none;
+}
+footer .copyright a:hover {
+    color: #ec7532;
+}
+footer .fab {
+    color: rgba(255, 255, 255, 0.3);
+    margin-right: 15px;
+}
+footer .fab:hover {
+    color: #ec7532;
+}
